@@ -1,10 +1,12 @@
 import React from 'react';
+
 import { Job } from '../components/Job';
+import { Tech } from '../components/Tech';
 
 export function Home() {
   return (
     <div className="w-screen h-screen bg-slate-200">
-      <header className="w-full bg-header h-32">
+      <header className="w-full bg-header h-40">
         <div className="max-w-[70rem] h-32 flex items-center justify-between my-0 mx-auto py-0 px-8">
           <h1 className="font-black text-3xl text-white">EAE Jobs</h1>
 
@@ -24,8 +26,18 @@ export function Home() {
         </div>
       </header>
 
-      <main className="max-w-[70rem] flex items-center justify-between my-0 mx-auto py-0 px-8 mt-14">
-        <div className="w-full grid grid-cols-1 gap-5">
+      <main className="max-w-[70rem] flex flex-col items-center justify-between my-0 mx-auto py-0 px-8 -mt-10">
+        <div className="w-full bg-white min-h-20 h-20 shadow-lg rounded-md flex items-center justify-between px-5 lg:px-7">
+          <div className="min-h-20 h-20 flex items-center flex-wrap gap-2 py-2">
+            <Tech title="Fullstack" filter />
+            <Tech title="Python" filter />
+            <Tech title="Python" filter />
+            <Tech title="Python" filter />
+          </div>
+          <a className="underline cursor-pointer">Clear</a>
+        </div>
+
+        <div className="w-full grid grid-cols-1 gap-5 mt-6">
           <Job title="Photosnap" />
           <Job title="Photosnap" />
           <Job title="Photosnap" />

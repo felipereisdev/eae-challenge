@@ -1,5 +1,7 @@
 import React from 'react';
+
 import { Badge } from './Badge';
+import { Tech } from './Tech';
 
 interface JobProps {
   title: string;
@@ -38,21 +40,11 @@ export function Job({ title }: JobProps) {
         </div>
       </div>
       <div className="w-full flex justify-center lg:justify-end flex-wrap gap-2 pt-3">
-        <span className="px-2 py-1 rounded-sm text-sm font-bold text-header bg-gray-200">
-          Fullstack
-        </span>
-        <span className="px-2 py-1 rounded-sm text-sm font-bold text-header bg-gray-200">
-          Python
-        </span>
-        <span className="px-2 py-1 rounded-sm text-sm font-bold text-header bg-gray-200">
-          React
-        </span>
-        <span className="px-2 py-1 rounded-sm text-sm font-bold text-header bg-gray-200">
-          Junior
-        </span>
-        <span className="px-2 py-1 rounded-sm text-sm font-bold text-header bg-gray-200">
-          Junior
-        </span>
+        <Tech title="Fullstack" />
+        <Tech title="Python" />
+        <Tech title="React" />
+        <Tech title="Junior" />
+        <Tech title="Junior" />
       </div>
     </div>
   );
