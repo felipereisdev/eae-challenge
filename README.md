@@ -6,7 +6,7 @@ A Basic jobs app for developers, consuming an api in laravel and with frontend i
 
 ## Screenshots
 
-![App Screenshot](https://via.placeholder.com/468x300?text=App+Screenshot+Here)
+![App Screenshot](https://github.com/felipereisdev/eae-challenge/blob/master/screenshot.png?raw=true)
 
 
 ## Techs
