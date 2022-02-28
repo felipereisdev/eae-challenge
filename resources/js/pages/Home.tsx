@@ -22,17 +22,20 @@ export function Home() {
   });
 
   useEffect(() => {
-    api.get('/jobs').then((response) => setJobs(response.data));
-  }, []);
+    api.post('/jobs', { filters }).then((response) => setJobs(response.data));
+  }, [filters]);
 
   function handleSetFilters(filtersData: Filter[], filter?: Filter) {
+    let newFilters = [];
+
     if (filter) {
-      setFilters([...filters, filter]);
+      newFilters = [...filters, filter];
     } else {
-      setFilters([...filtersData]);
+      newFilters = filtersData;
     }
 
-    localStorage.setItem('@EAEJobs:filters', JSON.stringify(filters));
+    setFilters(newFilters);
+    localStorage.setItem('@EAEJobs:filters', JSON.stringify(newFilters));
   }
 
   function handleClearFilters() {

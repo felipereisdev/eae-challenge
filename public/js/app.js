@@ -2608,19 +2608,24 @@ function Home() {
       setFilters = _ref6[1];
 
   (0, react_1.useEffect)(function () {
-    api_1.api.get('/jobs').then(function (response) {
+    api_1.api.post('/jobs', {
+      filters: filters
+    }).then(function (response) {
       return setJobs(response.data);
     });
-  }, []);
+  }, [filters]);
 
   function handleSetFilters(filtersData, filter) {
+    var newFilters = [];
+
     if (filter) {
-      setFilters([].concat(_toConsumableArray(filters), [filter]));
+      newFilters = [].concat(_toConsumableArray(filters), [filter]);
     } else {
-      setFilters(_toConsumableArray(filtersData));
+      newFilters = filtersData;
     }
 
-    localStorage.setItem('@EAEJobs:filters', JSON.stringify(filters));
+    setFilters(newFilters);
+    localStorage.setItem('@EAEJobs:filters', JSON.stringify(newFilters));
   }
 
   function handleClearFilters() {

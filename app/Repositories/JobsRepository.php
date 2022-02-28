@@ -3,6 +3,7 @@
 namespace App\Repositories;
 
 use App\Models\Job;
+use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Collection;
 
 class JobsRepository implements IJobsRepository
@@ -55,5 +56,31 @@ class JobsRepository implements IJobsRepository
     public function addTools(Job $job, array $toolIds): void
     {
         $job->tools()->sync($toolIds);
+    }
+
+    public function filter(array $filters): Collection
+    {
+        $jobs = $this->model->allRelations();
+
+        if (count($filters) > 0) {
+            $jobs = $jobs->where(function (Builder $query) use ($filters) {
+                collect($filters)->pluck('name')->each(function (string $filter) use ($query) {
+                    $query->where(function (Builder $query) use ($filter) {
+                        $query->where('title', 'LIKE', '%'.$filter.'%')
+                            ->orWhereHas('languages', function (Builder $query) use ($filter) {
+                                $query->where('name', $filter);
+                            })
+                            ->orWhereHas('tools', function (Builder $query) use ($filter) {
+                                $query->where('name', $filter);
+                            });
+                    });
+                });
+            });
+        }
+
+        $jobs = $jobs->orderBy('title')
+            ->get();
+
+        return $jobs;
     }
 }

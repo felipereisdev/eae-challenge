@@ -1,12 +1,13 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Filters;
 
+use App\Http\Controllers\Controller;
 use App\Repositories\IJobsRepository;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
 
-class JobsController extends Controller
+class FilterJobsController extends Controller
 {
     private IJobsRepository $jobsRepository;
 
@@ -15,7 +16,7 @@ class JobsController extends Controller
         $this->jobsRepository = $jobsRepository;
     }
 
-    public function index(Request $request): JsonResponse
+    public function filter(Request $request): JsonResponse
     {
         $jobs = $this->jobsRepository->filter($request->get('filters'));
 

@@ -18,4 +18,6 @@ interface IJobsRepository
     public function addLanguages(Job $job, array $languageIds): void;
 
     public function addTools(Job $job, array $toolIds): void;
+
+    public function filter(array $filters): Collection;
 }
