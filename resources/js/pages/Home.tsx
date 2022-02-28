@@ -64,7 +64,7 @@ export function Home() {
 
   return (
     <FilterContext.Provider value={{ filters, handleSetFilters }}>
-      <div className="w-screen pb-8 bg-slate-200">
+      <div className="w-screen pb-8 min-h-screen bg-slate-200">
         <header className="w-full bg-header h-40">
           <div className="max-w-[70rem] h-32 flex items-center justify-between my-0 mx-auto py-0 px-8">
             <h1 className="font-black text-3xl text-white">EAE Jobs</h1>
@@ -88,8 +88,8 @@ export function Home() {
         </header>
 
         <main className="max-w-[70rem] flex flex-col items-center justify-between my-0 mx-auto py-0 px-8 -mt-10">
-          <div className="w-full bg-white min-h-20 h-20 shadow-lg rounded-md flex items-center justify-between px-5 lg:px-7">
-            <div className="min-h-20 h-20 flex items-center flex-wrap gap-2 py-2">
+          <div className="w-full bg-white min-h-[5rem] lg:h-20 shadow-lg rounded-md flex items-center justify-between px-5 lg:px-7">
+            <div className="min-h-[5rem] lg:h-20 flex items-center flex-wrap gap-2 py-2">
               {filters.length > 0 ? (
                 filters.map((filter) => (
                   <Tech title={filter.name} key={filter.id} filter />
