@@ -46,6 +46,13 @@
         ],
         "post-create-project-cmd": [
             "@php artisan key:generate --ansi"
+        ],
+        "app-setup": [
+            "@php -r \"file_exists('.env') || copy('.env.example', '.env');\"",
+            "@php artisan key:generate --ansi",
+            "@php artisan migrate --ansi",
+            "@php artisan db:seed --ansi",
+            "@php artisan storage:link --ansi"
         ]
     },
     "extra": {
